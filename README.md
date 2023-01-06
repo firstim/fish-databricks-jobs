@@ -41,7 +41,7 @@ $ fish-databricks-jobs permission-assign -h
 │    --help     -h                                            Show this message and exit.                                 │
 ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
-### use as sdk to get job list
+### use as sdk to list jobs
 ```angular2html
 from fish_databricks_jobs.services.jobs import JobsService, Job
 host, token = 'https://example.cloud.databricks.com','exampletokenc0e27d8b91fd8c0144f0a23'
