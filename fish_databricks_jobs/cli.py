@@ -34,8 +34,6 @@ def list(
     '''List Databricks jobs
     '''
     host, token = config.get(profile)
-    print(host)
-    print(token)
     service = JobsService(host, token)
     jobs = service.list(filter)
     size = len(jobs)
