@@ -27,11 +27,16 @@ def common(
 @app.command()
 def list(
         filter: str = typer.Option(None, '--filter', '-f', help='filter jobs, case insensitively'),
-        profile: str = typer.Option('DEFAULT', '--profile', '-p', help='profile name in ~/.databrickscfg')
+        profile: str = typer.Option('DEFAULT', '--profile', '-p', help='profile name in ~/.databrickscfg'),
+        host: str = typer.Option(None, help='databricks host. e.g: https://example.cloud.databricks.com'),
+        token: str = typer.Option(None, help='databricks token')
 ):
     '''List Databricks jobs
     '''
-    host, token = config.get(profile)
+    if host and token:
+        pass
+    else:
+        host, token = config.get(profile)
     service = JobsService(host, token)
     jobs = service.list(filter)
     size = len(jobs)

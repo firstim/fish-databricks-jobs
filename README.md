@@ -10,7 +10,7 @@ to assign group `mygroup` with permission `can_manage` to job by filter `8439669
 ```angular2html
 $ fish-databricks-jobs permission-assign mygroup --type group --level can_manage --filter 843966944901662
 ```
-# installation
+# Installation
 ```
 $ pip install fish-databricks-jobs
 ```
@@ -18,7 +18,8 @@ $ pip install fish-databricks-jobs
 $ fish-databricks-jobs --version
 Version: 0.6.8
 ```
-# usage
+# Usage
+### permission-assign
 ```
 $ fish-databricks-jobs permission-assign -h
 
@@ -40,7 +41,16 @@ $ fish-databricks-jobs permission-assign -h
 │    --help     -h                                            Show this message and exit.                                 │
 ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
-# config authentication
+### Use as sdk to get job list
+```angular2html
+from fish_databricks_jobs.services.jobs import JobsService, Job
+host, token = 'https://example.cloud.databricks.com','dapi41bc0e27d8b91fd8c0144f0a2343504b'
+job_list = JobsService(host, token).list()
+df = spark.createDataFrame(job_list)
+
+display(df)
+```
+# Config authentication
 fish-databricks-jobs uses same config file as `databricks-cli`. e.g.`~/.databrickscfg` for macOS. Similar for Windows.
 ```
 [DEFAULT]
