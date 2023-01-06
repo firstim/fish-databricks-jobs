@@ -41,10 +41,10 @@ $ fish-databricks-jobs permission-assign -h
 │    --help     -h                                            Show this message and exit.                                 │
 ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
-### Use as sdk to get job list
+### use as sdk to get job list
 ```angular2html
 from fish_databricks_jobs.services.jobs import JobsService, Job
-host, token = 'https://example.cloud.databricks.com','dapi41bc0e27d8b91fd8c0144f0a2343504b'
+host, token = 'https://example.cloud.databricks.com','exampletokenc0e27d8b91fd8c0144f0a23'
 job_list = JobsService(host, token).list()
 df = spark.createDataFrame(job_list)
 
@@ -55,7 +55,7 @@ fish-databricks-jobs uses same config file as `databricks-cli`. e.g.`~/.databric
 ```
 [DEFAULT]
 host = https://example.cloud.databricks.com
-token = dapi41bc0e27d8b91fd8c0144f0a2343504b
+token = exampletokenc0e27d8b91fd8c0144f0a23
 ```
 
 
