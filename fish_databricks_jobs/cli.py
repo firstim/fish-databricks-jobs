@@ -28,15 +28,14 @@ def common(
 def list(
         filter: str = typer.Option(None, '--filter', '-f', help='filter jobs, case insensitively'),
         profile: str = typer.Option('DEFAULT', '--profile', '-p', help='profile name in ~/.databrickscfg'),
-        host: str = typer.Option(None, help='databricks host. e.g: https://example.cloud.databricks.com'),
-        token: str = typer.Option(None, help='databricks token')
+        # host: str = typer.Option(None, help='databricks host. e.g: https://example.cloud.databricks.com'),
+        # token: str = typer.Option(None, help='databricks token')
 ):
     '''List Databricks jobs
     '''
-    if host and token:
-        pass
-    else:
-        host, token = config.get(profile)
+    host, token = config.get(profile)
+    print(host)
+    print(token)
     service = JobsService(host, token)
     jobs = service.list(filter)
     size = len(jobs)
@@ -61,7 +60,7 @@ def permission_assign(
 ):
     '''Assign permission to user
     '''
-    jobs, size = list(filter, profile)
+    jobs, size = list(filter=filter, profile=profile)
     if size == 0:
         raise typer.Exit()
 
