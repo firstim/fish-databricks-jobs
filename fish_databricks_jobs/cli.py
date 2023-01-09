@@ -29,7 +29,7 @@ def list(
         filter: str = typer.Option(None, '--filter', '-f', help='filter jobs, case insensitively'),
         profile: str = typer.Option('DEFAULT', '--profile', '-p', help='profile name in ~/.databrickscfg')
 ):
-    '''List Databricks jobs
+    '''List Databricks jobs in table (id name tags creator schedule_status)
     '''
     host, token = config.get(profile)
     service = JobsService(host, token)
@@ -81,7 +81,7 @@ def permission_assign(
 def _jobs_to_table(jobs: [Job]):
     ret = []
     for j in jobs:
-        ret.append((j.id, j.name, j.tags))
+        ret.append((j.id, j.name, j.tags, j.creator, j.schedule_status))
     return sorted(ret, key=lambda j: j[1].lower())
 
 
