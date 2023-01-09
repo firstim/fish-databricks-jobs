@@ -31,7 +31,7 @@ class JobsService:
     def list(self, filter:str=None) -> []:
         _jobs = self.all_jobs
         if filter:
-            _jobs = [j for j in _jobs if filter.lower() in str(j).lower()]
+            _jobs = [j for j in _jobs if j.contains(filter)]
         return _jobs
 
 
@@ -40,6 +40,8 @@ class Job():
         self.id:str = str(job_dict['job_id'])
         self.name:str = job_dict['settings']['name']
         self.tags:str = Job._tags(job_dict)
+        self.creator:str = Job._creator(job_dict)
+        self.schedule_status:str = Job._schedule_status(job_dict)
 
     @staticmethod
     def _tags(job_dict: dict) -> str:
@@ -48,5 +50,31 @@ class Job():
 
         return ','.join(list)
 
-    def __str__(self):
-        return self.id + self.name + self.tags
+    @staticmethod
+    def _creator(job_dict: dict) -> str:
+        try:
+            result = job_dict['creator_user_name']
+        except KeyError:
+            result = ''
+        return result
+
+    @staticmethod
+    def _schedule_status(job_dict: dict) -> str:
+        try:
+            result = job_dict['settings']['schedule']['pause_status']
+        except KeyError:
+            result = ''
+        return result
+
+    def contains(self, filter: str) -> bool:
+        fl = filter.lower()
+        if fl in self.id.lower():
+            return True
+        if fl in self.name.lower():
+            return True
+        if fl in self.tags.replace(',', '').lower():
+            return True
+        if fl in self.creator.lower():
+            return True
+
+        return False
