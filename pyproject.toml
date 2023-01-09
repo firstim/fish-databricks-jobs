@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fish-databricks-jobs"
-version = "0.7.0"
+version = "0.7.1"
 description = "cli and sdk to manage Jobs in Databricks"
 authors = ["Tim Chen <firstim@gmail.com>"]
 readme = "README.md"
@@ -9,6 +9,7 @@ homepage = "https://github.com/firstim/fish-databricks-jobs"
 
 [tool.poetry.scripts]
 fish-databricks-jobs = "fish_databricks_jobs.cli:app"
+jobser = "fish_databricks_jobs.cli:app"
 
 [tool.poetry.dependencies]
 python = "^3.7"

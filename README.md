@@ -10,9 +10,11 @@ to assign group `mygroup` with permission `can_manage` to job by filter `8439669
 ```angular2html
 $ fish-databricks-jobs permission-assign mygroup --type group --level can_manage --filter 843966944901662
 ```
+# Requirements
+- Python Version >= 3.7 
 # Installation
 ```
-$ pip install fish-databricks-jobs
+$ pip install --upgrade fish-databricks-jobs
 ```
 ```angular2html
 $ fish-databricks-jobs --version
