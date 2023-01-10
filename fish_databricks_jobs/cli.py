@@ -32,7 +32,7 @@ def list(
 ):
     '''List Databricks jobs in table (id name tags creator schedule_status)
     '''
-    with Progress(SpinnerColumn(spinner_name='aesthetic', style='fg'), transient=True) as progress:
+    with Progress(SpinnerColumn(spinner_name='aesthetic'), transient=True) as progress:
         progress.add_task(description=None, total=None)
         return _list(filter, profile)
 
@@ -74,7 +74,7 @@ def permission_assign(
     permission = Permission(name, type=type, level=level)
 
     service = PermissionsService(host, token)
-    for job in track(jobs, description=f'Assigning permission({permission.level.value})...'):
+    for job in track(jobs, description=f'[green]Assigning permission({permission.level.value})...', complete_style='bar.finished'):
         print(job.name)
         try:
             service.assign_permission(job_id=job.id, permission=permission)
