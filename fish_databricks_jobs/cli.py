@@ -32,7 +32,7 @@ def list(
 ):
     '''List Databricks jobs in table (id name tags creator schedule_status)
     '''
-    with Progress(SpinnerColumn(), transient=True) as progress:
+    with Progress(SpinnerColumn(spinner_name='aesthetic'), transient=True) as progress:
         progress.add_task(description="Processing...", total=None)
         return _list(filter, profile)
 
