@@ -1,6 +1,7 @@
 #!/usr/bin/env python
+
 import typer
-from rich.progress import track
+from rich.progress import track, Progress, SpinnerColumn
 from tabulate import tabulate
 
 import fish_databricks_jobs.config as config
@@ -31,6 +32,11 @@ def list(
 ):
     '''List Databricks jobs in table (id name tags creator schedule_status)
     '''
+    with Progress(SpinnerColumn(), transient=True) as progress:
+        progress.add_task(description="Processing...", total=None)
+        return _list(filter, profile)
+
+def _list(filter, profile):
     host, token = config.get(profile)
     service = JobsService(host, token)
     jobs = service.list(filter)
