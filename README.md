@@ -10,9 +10,8 @@ to assign group `mygroup` with permission `can_manage` to job by filter `8439669
 ```angular2html
 $ fish-databricks-jobs permission-assign mygroup --type group --level can_manage --filter 843966944901662
 ```
-# Requirements
-- Python Version >= 3.7 
 # Installation
+Python Version >= 3.7 
 ```
 $ pip install --upgrade fish-databricks-jobs
 ```
@@ -44,9 +43,16 @@ $ fish-databricks-jobs permission-assign -h
 ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 ### use as sdk to list jobs
-```angular2html
+in databricks' notebook
+```
+%pip install fish-databricks-jobs
+```
+
+```python
 from fish_databricks_jobs.services.jobs import JobsService, Job
-host, token = 'https://example.cloud.databricks.com','exampletokenc0e27d8b91fd8c0144f0a23'
+host = f'https://{spark.conf.get("spark.databricks.workspaceUrl")}'
+token = 'exampletokenc0e27d8b91fd8c0144f0a23'
+
 job_list = JobsService(host, token).list()
 df = spark.createDataFrame(job_list)
 
