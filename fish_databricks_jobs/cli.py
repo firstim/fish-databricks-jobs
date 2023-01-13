@@ -60,7 +60,7 @@ def permission_assign(
         profile: str = typer.Option('DEFAULT', '--profile', '-p', help='profile name in ~/.databrickscfg'),
         force: bool = typer.Option(False, '--force', help='Attempt to assign permission without prompting for confirmation. **Use this flag with caution**')
 ):
-    '''Assign permission to user
+    '''Assign permission to a user, a service principal or a group
     '''
     jobs, size = list(filter=filter, profile=profile)
     if size == 0:
