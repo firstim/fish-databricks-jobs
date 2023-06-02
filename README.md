@@ -76,12 +76,15 @@ curl -sSL https://install.python-poetry.org | python -
 ```
 poetry config virtualenvs.in-project true
 ```
-3. 
+3. install dependencies python libraries in the venv 
 ```
 poetry install
 poetry shell 
 ```
 4. in pycharm, Add New Interpreter -> Poetry Environment ...
-
-
-
+5. Verifiy 
+```
+(fish-databricks-jobs-py3.8) (base) username@macbook:~/projects/fish-databricks-jobs [main] 
+$ python ./fish_databricks_jobs/cli.py --version
+Version: 0.7.6
+```
