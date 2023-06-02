@@ -65,6 +65,23 @@ fish-databricks-jobs uses same config file as `databricks-cli`. e.g.`~/.databric
 host = https://example.cloud.databricks.com
 token = exampletokenc0e27d8b91fd8c0144f0a23
 ```
+# Developer 
+## Setup
+1. Checkout code 
+2. install `poetry`, e.g: in macOS or Windows-cmder 
+```
+curl -sSL https://install.python-poetry.org | python -
+```
+2. config poetry 
+```
+poetry config virtualenvs.in-project true
+```
+3. 
+```
+poetry install
+poetry shell 
+```
+4. in pycharm, Add New Interpreter -> Poetry Environment ...
 
 
 
