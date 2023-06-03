@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+### !/usr/local/bin/bash
 set -x
 
 poetry version patch
