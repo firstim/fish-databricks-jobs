@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fish-databricks-jobs"
-version = "0.7.16"
+version = "0.7.17"
 description = "cli and sdk to manage Jobs in Databricks"
 authors = ["Tim Chen <firstim@gmail.com>"]
 readme = "README.md"
